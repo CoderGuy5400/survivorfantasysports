@@ -1,8 +1,63 @@
-<div>
-  <h1>
-    Welcome to Survivor Fantasy Sports!
-  </h1>
-  <p>
-    We are actively in development. Updates coming soon!
-  </p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Survivor Fantasy Sports!</title>
+  <style>
+    body {
+      font-family: monospace;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .field {
+      font-size: 24px;
+      white-space: pre;
+      display: inline-block;
+    }
+
+    .football {
+      position: relative;
+      left: 0;
+      transition: left 1s ease-in-out;
+    }
+
+    .goal-posts {
+      font-weight: bold;
+    }
+
+    #football {
+      display: inline-block;
+      position: absolute;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="field" class="field">
+    <div class="goal-posts">|     |</div>
+    <div class="goal-posts">|     |</div>
+    <div class="goal-posts">|     |</div>
+    <div id="football">O</div>
+  </div>
+
+  <script>
+    const football = document.getElementById('football');
+    let kicked = false;
+
+    document.body.addEventListener('click', () => {
+      if (!kicked) {
+        // Animate the football towards the goal
+        football.style.left = '100px';  // Adjust this value based on the width of your screen
+      } else {
+        // Reset the football to the start
+        football.style.left = '0';
+      }
+      kicked = !kicked;
+    });
+  </script>
+
+</body>
+</html>
