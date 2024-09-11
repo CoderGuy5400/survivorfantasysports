@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Survivor Fantasy Sports!</title>
+  <title>Emoji Football Field Goal</title>
   <style>
     body {
       font-family: monospace;
@@ -15,6 +15,7 @@
       font-size: 24px;
       white-space: pre;
       display: inline-block;
+      position: relative;
     }
 
     .football {
@@ -23,13 +24,15 @@
       transition: left 1s ease-in-out;
     }
 
-    .goal-posts {
+    .goal-post {
       font-weight: bold;
     }
 
     #football {
       display: inline-block;
       position: absolute;
+      top: 70px; /* Adjust for vertical position */
+      left: 0;
     }
 
   </style>
@@ -37,10 +40,18 @@
 <body>
 
   <div id="field" class="field">
-    <div class="goal-posts">|     |</div>
-    <div class="goal-posts">|     |</div>
-    <div class="goal-posts">|     |</div>
-    <div id="football">O</div>
+    <div class="goal-post">    _______ </div>
+    <div class="goal-post">   |       |</div>
+    <div class="goal-post">   |       |</div>
+    <div class="goal-post">   |       |</div>
+    <div class="goal-post">   |       |</div>
+    <div class="goal-post">___|       |___</div>
+    <div class="goal-post">   |       |</div>
+    <div class="goal-post">   |       |</div>
+    <div class="goal-post">   |       |</div>
+    <div class="goal-post">   |       |</div>
+    <div class="goal-post">   |_______|</div>
+    <div id="football">🏈</div>
   </div>
 
   <script>
@@ -49,8 +60,8 @@
 
     document.body.addEventListener('click', () => {
       if (!kicked) {
-        // Animate the football towards the goal
-        football.style.left = '100px';  // Adjust this value based on the width of your screen
+        // Move the football towards the goal
+        football.style.left = '130px';  // Adjust this value based on your screen size
       } else {
         // Reset the football to the start
         football.style.left = '0';
