@@ -25,9 +25,9 @@
     #football {
       display: inline-block;
       position: absolute;
-      top: 120px; /* Adjust this to align with the bottom of the field */
+      top: 120px; /* Starting position */
       left: 0;
-      transition: left 2s ease-in-out, top 2s ease-in-out; /* Smooth animation */
+      transition: left 2s ease-in-out, top 2s ease-in-out; /* Smooth glide */
     }
 
     /* Keyframes for spinning animation */
@@ -40,9 +40,9 @@
       }
     }
 
-    /* Add spinning effect during the movement */
+    /* Add spinning effect during movement */
     .spinning {
-      animation: spin 1s linear infinite;
+      animation: spin 2s linear; /* Spins for 2 seconds to match glide duration */
     }
 
   </style>
@@ -62,25 +62,34 @@
     <div id="football">🏈</div>
   </div>
 
-  <script>
+    <script>
     const football = document.getElementById('football');
     let kicked = false;
 
     document.body.addEventListener('click', () => {
       if (!kicked) {
-        // Add spinning animation
+        // Add spinning class to make the football spin
         football.classList.add('spinning');
         
-        // Move the football towards the goal with a smooth glide
-        football.style.left = '120px';  // Adjust the horizontal movement
-        football.style.top = '30px';   // Adjust the vertical movement
+        // Move the football towards the goal
+        football.style.left = '120px';  // Adjust horizontal movement
+        football.style.top = '30px';   // Adjust vertical movement
+        
+        // Stop spinning after the glide completes
+        setTimeout(() => {
+          football.classList.remove('spinning'); // Stop the spin after glide
+        }, 2000); // Matches the 2-second glide duration
       } else {
-        // Remove spinning animation
-        football.classList.remove('spinning');
-
-        // Reset the football to the start
+        // Instantly reset the football's position without gliding back
+        football.style.transition = 'none'; // Disable transition temporarily
         football.style.left = '0';
         football.style.top = '120px';
+
+        // Re-enable transition for next kick
+        setTimeout(() => {
+          football.style.transition = 'left 2s ease-in-out, top 2s ease-in-out';
+        }, 100); // Short delay to reset transition
+
       }
       kicked = !kicked;
     });
